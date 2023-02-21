@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682188716172",
+    "project_id": "mynotes-flutter-kaion",
+    "storage_bucket": "mynotes-flutter-kaion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682188716172:android:d95be09540476e1a7923a9",
+        "android_client_info": {
+          "package_name": "com.kaion.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682188716172-vcdj53jvdd11ihc7ar7t8srdqiuc0bo8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3d1xGIqWkKMsvRFjYmyB_Nj7yTTy9Jas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682188716172-vcdj53jvdd11ihc7ar7t8srdqiuc0bo8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
