@@ -30,11 +30,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register'),
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future: Firebase.initializeApp(
@@ -98,7 +94,6 @@ class _RegisterViewState extends State<RegisterView> {
             }
           }),
         ),
-      ),
-    );
+      );
   }
 }

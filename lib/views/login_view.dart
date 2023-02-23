@@ -30,11 +30,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future: Firebase.initializeApp(
@@ -97,7 +93,6 @@ class _LoginViewState extends State<LoginView> {
             }
           }),
         ),
-      ),
-    );
+      );
   }
 }
