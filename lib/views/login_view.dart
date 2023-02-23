@@ -30,7 +30,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(
+      appBar: AppBar(title: const Text('Login'),),
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future: Firebase.initializeApp(
@@ -86,6 +88,15 @@ class _LoginViewState extends State<LoginView> {
                         'Login',
                       ),
                     ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/register',
+                          (route) => false,
+                        );
+                      },
+                      child: const Text('Not registered yet? Register here!'),
+                    ),
                   ],
                 );
               default:
@@ -93,6 +104,7 @@ class _LoginViewState extends State<LoginView> {
             }
           }),
         ),
-      );
+      ),
+    );
   }
 }

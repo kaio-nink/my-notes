@@ -30,7 +30,11 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+      ),
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future: Firebase.initializeApp(
@@ -71,22 +75,31 @@ class _RegisterViewState extends State<RegisterView> {
                             password: password,
                           );
                           print(userCredential);
-                        } on FirebaseAuthException catch(e){
-                          if (e.code == 'weak-password'){
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'weak-password') {
                             print('Weak password. Enter a valid one.');
-                          } 
-                          if (e.code == 'email-already-in-use'){
+                          }
+                          if (e.code == 'email-already-in-use') {
                             print('This email is already in use.');
-                          } 
-                          if (e.code == 'invalid-email'){
+                          }
+                          if (e.code == 'invalid-email') {
                             print('This email is invalid.');
-                          } 
+                          }
                         }
                       },
                       child: const Text(
                         'Register',
                       ),
                     ),
+                    TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/login',
+                        (route) => false,
+                      );
+                    },
+                    child: const Text('Already have an account? Login here!'),
+                  ),
                   ],
                 );
               default:
@@ -94,6 +107,7 @@ class _RegisterViewState extends State<RegisterView> {
             }
           }),
         ),
-      );
+      ),
+    );
   }
 }
