@@ -62,9 +62,8 @@ class _LoginViewState extends State<LoginView> {
               onPressed: () async {
                 final email = _email.text;
                 final password = _password.text;
-                final UserCredential userCredential;
                 try {
-                  userCredential =
+                  final userCredential =
                       await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: email,
                     password: password,
@@ -91,7 +90,7 @@ class _LoginViewState extends State<LoginView> {
                     );
                   }
                 }
-                cacth(e) async{
+                catch(e) {
                   await showErrorDialog(
                     context,
                     e.toString(),
