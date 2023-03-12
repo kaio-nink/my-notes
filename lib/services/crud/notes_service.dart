@@ -9,13 +9,18 @@ import 'package:mynotes/services/crud/crud_exceptions.dart';
 class NotesService {
   Database? _db;
   List<DatabaseNote> _notes = [];
-  
+
   static final NotesService _shared = NotesService._sharedInstance();
-  NotesService._sharedInstance();
+  NotesService._sharedInstance() {
+    _notesStreamController = StreamController<List<DatabaseNote>>.broadcast(
+      onListen: () {
+        _notesStreamController.sink.add(_notes);
+      },
+    );
+  }
   factory NotesService() => _shared;
 
-  final _notesStreamController =
-      StreamController<List<DatabaseNote>>.broadcast();
+  late final StreamController<List<DatabaseNote>> _notesStreamController;
 
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
@@ -32,10 +37,10 @@ class NotesService {
     } on CouldNotFindUser {
       final createdUser = await createUser(email: email);
       return createdUser;
-    } catch(e) {
+    } catch (e) {
       rethrow;
     }
-  } 
+  }
 
   Database _getDatabaseOrThrow() {
     final db = _db;
@@ -63,7 +68,7 @@ class NotesService {
       throw UnableToGetDocumentsDirectory();
     }
   }
-  
+
   Future<void> _ensureDbIsOpen() async {
     try {
       await open();
@@ -71,7 +76,7 @@ class NotesService {
       // empty
     }
   }
-  
+
   Future<void> close() async {
     final db = _db;
 
@@ -241,7 +246,6 @@ class NotesService {
     _notes.add(updatedNote);
     _notesStreamController.add(_notes);
     return updatedNote;
- 
   }
 }
 
